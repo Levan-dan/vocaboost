@@ -34,4 +34,10 @@ public class SignUpController {
         return "/user/sign_up";
     }
 
+    @GetMapping("/showLogInForm")
+    public String showScreenLogIn(Model model){
+        model.addAttribute("user", new User());
+        return "/user/log_in";
+    }
+
 }

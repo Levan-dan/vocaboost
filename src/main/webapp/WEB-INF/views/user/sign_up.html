@@ -16,7 +16,7 @@
 <header style="margin-left: 0px" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <nav class="flex items-center justify-between h-16">
         <div class="flex items-center space-x-6">
-            <a class="flex items-center" href="#">
+            <a class="flex items-center" th:href="@{/homeWeb}">
                 <img style="width: 3rem; height: 3rem"  alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-8 h-8" height="32" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png" width="32"/>
             </a>
             <p style="margin-left: 15px" class="logo">VOCABOOST</p>
@@ -83,7 +83,7 @@
 
         <p class="mt-6 text-center text-sm text-gray-600">
             Already have an account?
-            <a th:href="@{/homeWeb/logInForm}" class="text-[#2DD897] hover:underline font-semibold" href="#">
+            <a th:href="@{/homeWeb/showLogInForm}" class="text-[#2DD897] hover:underline font-semibold" href="#">
                 Sign In
             </a>
         </p>
