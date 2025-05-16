@@ -22,4 +22,16 @@ public class SignUpController {
 
     @Value("${file-upload}")
     private String uploadPath;
+
+    @GetMapping("")
+    public String showMainScreenWebVocaboost(){
+        return "/user/main_screen";
+    }
+
+    @GetMapping("showSignUpForm")
+    public String showScreenSignUp(Model model){
+        model.addAttribute("user", new User());
+        return "/user/sign_up";
+    }
+
 }

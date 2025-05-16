@@ -1,0 +1,14 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif; /* Font đẹp, dễ đọc */
+    font-size: 25px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #007cf0, #00dfd8); /* Gradient màu xanh dương - xanh ngọc */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px; /* Giãn cách chữ cho dễ nhìn */
+    text-transform: uppercase;
+}
