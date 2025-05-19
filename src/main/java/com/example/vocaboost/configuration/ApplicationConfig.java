@@ -67,6 +67,8 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         return templateResolver;
     }
 
+
+
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -105,7 +107,7 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/learning_english");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/vocaboost");
         dataSource.setUsername("root");
         dataSource.setPassword("882005");
         return dataSource;
@@ -131,29 +133,21 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
 //        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(IProvinceService.class)));
 //    }
 
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("validation-message");
-        return messageSource;
-    }
+
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Static file: CSS
-        registry.addResourceHandler("/css/**")
-                .addResourceLocations("/css/");
-
-
-        // Cấu hình truy cập ảnh upload (http://localhost:8080/upload/images/abc.jpg)
-        registry.addResourceHandler("/upload/images/**")
-                .addResourceLocations("file:" + uploadPath + "/images/");
-
-        // Cấu hình truy cập nhạc upload (http://localhost:8080/upload/music/abc.mp3)
-        registry.addResourceHandler("/upload/music/**")
-                .addResourceLocations("file:" + uploadPath + "/music/");
-
+        registry
+                .addResourceHandler("/css/**")
+                .addResourceLocations("classpath:/static/css/");
+        registry
+                .addResourceHandler("/js/**")
+                .addResourceLocations("classpath:/static/js/");
+        registry
+                .addResourceHandler("/images/**")
+                .addResourceLocations("file:" + uploadPath); // Thêm ánh xạ file
     }
+
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getResolver() {

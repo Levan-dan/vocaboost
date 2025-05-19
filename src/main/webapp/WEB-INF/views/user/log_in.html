@@ -1,0 +1,94 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Ultimate Place to Improve Your English - Sign In</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          rel="stylesheet"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+          rel="stylesheet"
+  />
+ <link rel="stylesheet" th:href="@{/css/user/sign_in.css}"/>
+</head>
+<body class="bg-[#0F3B6F] text-white min-h-screen flex flex-col">
+<header style="margin-left: 0px" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <nav class="flex items-center justify-between h-16">
+    <div class="flex items-center space-x-6">
+      <a class="flex items-center" th:href="@{/homeWeb}">
+        <img style="width: 3rem; height: 3rem" alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-9 h-9" height="32" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png" width="32"/>
+      </a>
+      <p style="margin-left: 15px" class="logo">VOCABOOST</p>
+    </div>
+  </nav>
+</header>
+<main
+        class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12"
+>
+  <div
+          class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-gray-900"
+  >
+    <h2 class="text-3xl font-extrabold mb-8 text-center text-[#0F3B6F]">
+      Sign In to Your Account
+    </h2>
+    <form action="#" method="POST" class="space-y-6" novalidate>
+      <div>
+        <label
+                for="email"
+                class="block text-sm font-semibold mb-1"
+        >Email</label
+        >
+        <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent"
+        />
+      </div>
+      <div>
+        <label
+                for="password"
+                class="block text-sm font-semibold mb-1"
+        >Password</label
+        >
+        <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Enter your password"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent"
+        />
+      </div>
+      <div class="flex items-center space-x-2">
+        <input
+                type="checkbox"
+                id="showPassword"
+                class="h-4 w-4 text-[#2DD897] focus:ring-[#2DD897] border-gray-300 rounded"
+        />
+        <label for="showPassword" class="text-sm select-none">Show Password</label>
+      </div>
+      <button
+              type="submit"
+              class="w-full bg-[#2DD897] hover:bg-[#27c07a] text-white font-semibold py-3 rounded-md transition-colors duration-200"
+      >
+        Sign In
+      </button>
+    </form>
+    <p class="mt-6 text-center text-sm text-gray-600">
+      Don't have an account?
+      <a  th:href="@{/homeWeb/showSignUpForm}" href="#" class="text-[#2DD897] hover:underline font-semibold"
+      >Sign Up</a
+      >
+    </p>
+  </div>
+</main>
+<script th:src="@{/js/user/sign_in.js}">
+</script>
+</body>
+</html>
