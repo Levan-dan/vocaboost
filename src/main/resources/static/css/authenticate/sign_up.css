@@ -18,3 +18,8 @@ body {
     height: 190px;
     width: 190px;
 }
+
+.error{
+    font-size: 10px;
+    color: rgba(255, 0, 0, 0.84);
+}

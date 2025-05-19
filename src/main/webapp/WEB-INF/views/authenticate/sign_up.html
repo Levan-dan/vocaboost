@@ -9,8 +9,7 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{/css/user/sign_up.css}">
-
+    <link rel="stylesheet" th:href="@{/css/authenticate/sign_up.css}">
 </head>
 <body class="bg-[#0F3B6F] text-white min-h-screen flex flex-col">
 <header style="margin-left: 0px" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +20,6 @@
             </a>
             <p style="margin-left: 15px" class="logo">VOCABOOST</p>
         </div>
-
     </nav>
 </header>
 <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
@@ -29,41 +27,45 @@
         <h2 class="text-3xl font-extrabold mb-8 text-center text-[#0F3B6F]">
             Create Your Account
         </h2>
-
-
         <form th:action="@{/homeWeb/signUp}"  th:object="${user}"  action="#" class="grid grid-cols-1 md:grid-cols-2 gap-8" enctype="multipart/form-data" method="POST" novalidate="">
             <!-- Left column: inputs -->
             <div class="space-y-5">
                 <div>
                     <label class="block text-sm font-semibold mb-1" for="name">
-                        Name
+                        Name *
                     </label>
-                    <input th:field="*{username}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="name"  placeholder="Your full name" required="" type="text"/>
+                    <input th:field="*{username}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="name"  placeholder="Your full name" required type="text"/>
+                    <p  id="usernameError" class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-1" for="email">
-                        Email
+                        Email *
                     </label>
-                    <input th:field="*{email}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="email"  placeholder="you@example.com" required="" type="email"/>
+                    <input th:field="*{email}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="email"  placeholder="you@example.com" required type="email"/>
+                    <p id="emailError" class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-1" for="phone">
-                        Phone Number
+                        Phone Number *
                     </label>
-                    <input th:field="*{phoneNumber}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="phone"  placeholder="+84 123 456 789" required="" type="tel"/>
+                    <input th:field="*{phoneNumber}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="phone"  placeholder="+84 123 456 789" required type="tel"/>
+                    <p id="phoneError" class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-1" for="password">
-                        Password
+                        Password *
                     </label>
-                    <input th:field="*{password}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="password"  placeholder="Enter your password" required="" type="password"/>
+                    <input  th:field="*{password}" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="password"  placeholder="Enter your password" required type="password"/>
+                    <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-1" for="confirm-password">
-                        Confirm Password
+                    <label class="block text-sm font-semibold mb-1" for="confirmPassword">
+                        Confirm Password *
                     </label>
-                    <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" id="confirm-password" name="confirm_passwordUser" placeholder="Confirm your password" required="" type="password"/>
+                    <input class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2DD897] focus:border-transparent" th:field="*{confirmPassword}" id="confirmPassword" placeholder="Confirm your password" required="" type="password"/>
                 </div>
+
+
                 <button type="submit" class="w-full bg-[#2DD897] hover:bg-[#27c07a] text-white font-semibold py-3 rounded-md transition-colors duration-200 mt-4">
                     Sign Up
                 </button>
@@ -76,11 +78,9 @@
                 <div id="pictureFrame" class="w-40 h-40 mb-4 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center overflow-hidden bg-gray-50">
                     <img alt="User avatar preview placeholder" class="w-full h-full object-cover" height="160" id="avatarPreview" src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" width="160"/>
                 </div>
-                <input th:field="*{avatar}" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#2DD897] file:text-white hover:file:bg-[#27c07a] cursor-pointer" id="avatar" name="avatar" type="file"/>
+                <input th:field="*{avatar}" accept="image/*" value="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#2DD897] file:text-white hover:file:bg-[#27c07a] cursor-pointer" id="avatar" name="avatar" type="file"/>
             </div>
         </form>
-
-
         <p class="mt-6 text-center text-sm text-gray-600">
             Already have an account?
             <a th:href="@{/homeWeb/showLogInForm}" class="text-[#2DD897] hover:underline font-semibold" href="#">
@@ -89,8 +89,7 @@
         </p>
     </div>
 </main>
-
-<script th:src="@{/js/user/sign_up.js}">
+<script th:src="@{/js/authenticate/sign_up.js}">
 </script>
 </body>
 </html>

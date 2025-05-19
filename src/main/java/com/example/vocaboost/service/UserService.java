@@ -48,6 +48,6 @@ public class UserService implements IUserService {
             file.transferTo(dest);
             return "/images/" + fileName;
         }
-        return null;
+        return "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png";
     }
 }

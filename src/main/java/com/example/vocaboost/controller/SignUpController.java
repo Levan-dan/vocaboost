@@ -2,14 +2,17 @@ package com.example.vocaboost.controller;
 
 import com.example.vocaboost.model.User;
 import com.example.vocaboost.service.IUserService;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -23,35 +26,46 @@ public class SignUpController {
 
     @GetMapping("")
     public String showMainScreenWebVocaboost() {
-        return "/user/main_screen";
+        return "/authenticate/main_screen";
     }
 
     @GetMapping("/showIntroducePage")
     public String showIntroducePage() {
-        return "/user/introduce_web";
+        return "/authenticate/introduce_web";
     }
 
     @GetMapping("/showSignUpForm")
     public String showScreenSignUp(Model model) {
         model.addAttribute("user", new User());
-        return "/user/sign_up";
+        return "/authenticate/sign_up";
     }
 
     @GetMapping("/showLogInForm")
     public String showScreenLogIn(Model model) {
         model.addAttribute("user", new User());
-        return "/user/log_in";
+        return "/authenticate/log_in";
     }
 
     @GetMapping("/showPrefacePage")
     public String showPreface() {
-        return "/user/preface_page";
+        return "/authenticate/preface_page";
     }
 
     @PostMapping("/signUp")
-    public String signUpToHomeUser(@ModelAttribute("user") User user,
+    public String signUpToHomeUser(@ModelAttribute("user") @Valid User user,
+                                   BindingResult bindingResult,
                                    @RequestParam("avatar") MultipartFile avatar,
                                    Model model) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "/authenticate/sign_up";
+        }
+
+        // Kiểm tra confirmPassword
+        if (!user.getPassword().equals(user.getConfirmPassword())) {
+            model.addAttribute("passwordMismatch", "Xác nhận mật khẩu không khớp");
+            return "/authenticate/sign_up";
+        }
+
 
         String avatarPath = userService.uploadAvatar(avatar);
         if (avatarPath != null) {
@@ -63,11 +77,7 @@ public class SignUpController {
 
         userService.save(user);
 
-//        model.addAttribute("mess", "Đăng ký thành công và ảnh đã được lưu!");
-//        model.addAttribute("name", user.getUsername());
-//        model.addAttribute("imageName", user.getAvatarPath());
-
-        return "/user/surveyQuestion";
+        return "/authenticate/surveyQuestion";
     }
 
 

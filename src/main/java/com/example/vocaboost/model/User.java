@@ -1,10 +1,13 @@
 package com.example.vocaboost.model;
 
 
-
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,20 +18,28 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-
-    @Column(nullable = false, length = 50)
+    @NotBlank(message = "Username must not be blank")
+    @Pattern(
+            regexp = "^(?!\\s*$)(?!.*\\s{2,})(?=.{3,50}$)[A-Za-z0-9 ]+$",
+            message = "Username must be 3-50 characters long, no spaces or accents"
+    )
     private String username;
 
-    @Column(nullable = false)
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
-    @Column(nullable = false)
+
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "Invalid email format")
     private String email;
-    @Column(nullable = false)
+
+    @Pattern(regexp = "^0\\d{9}$", message = "Incorrect phone number format")
     private String phoneNumber;
+
     private String level;
     private String role;
     @Transient  // Đánh dấu để không lưu MultipartFile vào cơ sở dữ liệu
     private MultipartFile avatar;
+    @Transient // Để không map field này vào database
+    private String confirmPassword;
 
     private String avatarPath;  // Lưu đường dẫn của ảnh vào cơ sở dữ liệu
     private LocalDateTime create_at;
@@ -36,8 +47,9 @@ public class User {
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SurveyResult> surveyResults;
-    public User() {}
 
+    public User() {
+    }
 
 
     public User(String username, String password, String email, String phoneNumber, String level, String role, MultipartFile avatar, LocalDateTime create_at, List<SurveyResult> surveyResults) {
@@ -151,5 +163,14 @@ public class User {
 
     public void setAvatarPath(String avatarPath) {
         this.avatarPath = avatarPath;
+    }
+
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
