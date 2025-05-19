@@ -1,0 +1,124 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+        Welcome - English Learning Web
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/user/preface_page.css}"/>
+</head>
+<body class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 min-h-screen flex flex-col">
+<header class="flex items-center justify-between px-6 py-4 bg-white bg-opacity-20 backdrop-blur-md sticky top-0 z-50">
+    <nav class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+            <a class="flex items-center" th:href="@{/homeWeb}">
+                <img style="width: 3rem; height: 3rem"  alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-8 h-8" height="32" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png" width="32"/>
+            </a>
+            <p style="margin-left: 15px" class="logo">VOCABOOST</p>
+        </div>
+    </nav>
+    <a th:href="@{/homeWeb}" class="hidden md:flex space-x-8 text-white font-semibold">
+        <img style="width: 3rem; height: 3rem" src="https://cdn-icons-png.flaticon.com/512/5501/5501859.png">
+    </a>
+</header>
+<main class="flex-grow container mx-auto px-6 py-16 max-w-5xl">
+    <section class="bg-white bg-opacity-90 rounded-3xl shadow-2xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 mb-16">
+        <img alt="Group of diverse people happily learning English online with laptops, books, and language icons" class="rounded-2xl shadow-lg w-full md:w-1/2 object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/275781f7-4c31-4419-5728-9e5b98a6a468.jpg" width="400"/>
+        <div class="w-full md:w-1/2">
+            <h2 class="text-4xl font-extrabold text-indigo-700 mb-6">
+                Welcome to English Learning Web
+            </h2>
+            <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+                We are thrilled to have you here! Our platform is designed to make your English learning journey enjoyable, effective, and accessible. Whether you are a beginner or looking to polish your skills, we have tailored courses and resources just for you.
+            </p>
+            <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+                Learning English is more than memorizing words and grammar; it’s about connecting with the world, opening doors to new opportunities, and gaining confidence in communication. Our modern teaching methods and interactive materials will guide you every step of the way.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Join us and start your path to mastering English today. Together, let's unlock your potential and embrace a brighter future!
+            </p>
+        </div>
+    </section>
+    <section class="bg-white bg-opacity-90 rounded-3xl shadow-2xl p-10 md:p-16 mb-16">
+        <h3 class="text-3xl font-bold text-indigo-700 mb-8 text-center">
+            Why Choose Us?
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div class="flex flex-col items-center">
+                <img alt="Icon of a graduation cap in purple color" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/ba84efa1-cb9b-495f-7404-520450fa20b9.jpg" width="80"/>
+                <h4 class="text-xl font-semibold mb-2 text-indigo-800">
+                    Expert Instructors
+                </h4>
+                <p class="text-gray-700">
+                    Learn from experienced teachers who are passionate about helping you succeed.
+                </p>
+            </div>
+            <div class="flex flex-col items-center">
+                <img alt="Icon of a clock with fast forward symbol in purple color" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/20b264c5-ea2b-4d32-f0fb-a0dacc22c3bd.jpg" width="80"/>
+                <h4 class="text-xl font-semibold mb-2 text-indigo-800">
+                    Flexible Learning
+                </h4>
+                <p class="text-gray-700">
+                    Study anytime, anywhere with our online courses designed to fit your schedule.
+                </p>
+            </div>
+            <div class="flex flex-col items-center">
+                <img alt="Icon of a trophy cup in purple color" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/ccc78eb8-950c-4eae-1a16-edad623da82f.jpg" width="80"/>
+                <h4 class="text-xl font-semibold mb-2 text-indigo-800">
+                    Proven Results
+                </h4>
+                <p class="text-gray-700">
+                    Thousands of learners have improved their English skills and achieved their goals.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white bg-opacity-90 rounded-3xl shadow-2xl p-10 md:p-16">
+        <h3 class="text-3xl font-bold text-indigo-700 mb-8 text-center">
+            Our Learning Approach
+        </h3>
+        <div class="space-y-8 text-gray-700 text-lg max-w-4xl mx-auto">
+            <div>
+                <h4 class="font-semibold text-indigo-800 mb-2">
+                    Interactive Lessons
+                </h4>
+                <p>
+                    Engage with interactive exercises, quizzes, and real-life scenarios to practice your skills actively.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-indigo-800 mb-2">
+                    Personalized Feedback
+                </h4>
+                <p>
+                    Receive detailed feedback on your progress to help you improve and stay motivated.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-indigo-800 mb-2">
+                    Community Support
+                </h4>
+                <p>
+                    Join a vibrant community of learners to share experiences, practice speaking, and make friends worldwide.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-indigo-800 mb-2">
+                    Practical Focus
+                </h4>
+                <p>
+                    Learn language skills that you can immediately apply in everyday conversations, work, and travel.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+<script th:href="@{/js/user/preface_page.js}" >
+
+</script>
+</body>
+</html>

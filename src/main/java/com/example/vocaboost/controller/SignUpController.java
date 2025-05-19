@@ -45,4 +45,9 @@ public class SignUpController {
         return "/user/log_in";
     }
 
+    @GetMapping("/showPrefacePage")
+    public String showPreface(){
+        return "/user/preface_page";
+    }
+
 }
