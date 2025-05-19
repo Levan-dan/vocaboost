@@ -1,0 +1,202 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+        English Vocabulary Learning
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/user/introduce_web.css}"/>
+
+</head>
+<body class="bg-gradient-to-r from-[#0F3B6F] via-[#1E5AA8] to-[#4C2A85] text-white min-h-screen flex flex-col">
+<header class="flex items-center justify-between px-6 py-4 bg-white bg-opacity-20 backdrop-blur-md sticky top-0 z-50">
+    <nav class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+            <a class="flex items-center" th:href="@{/homeWeb}">
+                <img style="width: 3rem; height: 3rem"  alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-8 h-8" height="32" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png" width="32"/>
+            </a>
+            <p style="margin-left: 15px" class="logo">VOCABOOST</p>
+        </div>
+    </nav>
+    <a th:href="@{/homeWeb}" class="hidden md:flex space-x-8 text-white font-semibold">
+       <img style="width: 3rem; height: 3rem" src="https://cdn-icons-png.flaticon.com/512/5501/5501859.png">
+    </a>
+</header>
+<nav class="md:hidden bg-white bg-opacity-90 backdrop-blur-md fixed top-16 left-0 right-0 z-40 transform -translate-y-full transition-transform duration-300" id="mobile-menu">
+    <ul class="flex flex-col space-y-4 p-6 text-indigo-700 font-semibold">
+        <li>
+            <a class="block hover:text-indigo-900" href="#features">
+                Features
+            </a>
+        </li>
+        <li>
+            <a class="block hover:text-indigo-900" href="#how-it-works">
+                How It Works
+            </a>
+        </li>
+        <li>
+            <a class="block hover:text-indigo-900" href="#testimonials">
+                Testimonials
+            </a>
+        </li>
+        <li>
+            <a class="block hover:text-indigo-900" href="#get-started">
+                Get Started
+            </a>
+        </li>
+    </ul>
+</nav>
+<main class="flex-grow">
+    <section aria-label="Introduction to VocaBoost English vocabulary learning website" class="relative flex flex-col-reverse md:flex-row items-center max-w-7xl mx-auto px-6 py-16 md:py-24 gap-12">
+        <div class="md:w-1/2 text-center md:text-left space-y-6">
+            <h2 class="text-white text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
+                Master English Vocabulary
+                <br/>
+                with Focus &amp; Fun
+            </h2>
+            <p class="text-indigo-100 text-lg md:text-xl max-w-xl drop-shadow-md">
+                VocaBoost is your creative and dynamic platform to learn English vocabulary effectively. Dive into interactive lessons, engaging games, and personalized challenges designed to keep your focus sharp and your learning exciting.
+            </p>
+            <a th:href="@{/homeWeb/showLogInForm}" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3 px-8 rounded-full shadow-lg transition" href="#get-started">
+                Get Started Now
+                <i class="fas fa-arrow-right ml-2">
+                </i>
+            </a>
+        </div>
+        <div class="md:w-1/2 flex justify-center md:justify-end">
+            <img alt="Creative and colorful illustration of a young person surrounded by English vocabulary words, books, and digital learning tools, showing excitement and focus" class="rounded-3xl shadow-2xl w-full max-w-md md:max-w-full" height="360" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4870e01b-877a-475e-b906-501339aa5a81.jpg" width="480"/>
+        </div>
+    </section>
+    <section aria-label="Features of VocaBoost English vocabulary learning platform" class="bg-white bg-opacity-90 backdrop-blur-md max-w-7xl mx-auto px-6 py-16 rounded-3xl shadow-lg mb-16" id="features">
+        <h3 class="text-indigo-900 text-3xl font-extrabold mb-12 text-center">
+            Why Choose VocaBoost?
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-indigo-800">
+            <div class="flex flex-col items-center text-center space-y-4 px-4">
+                <img alt="Icon representing focus with a target and arrow hitting the center" class="w-24 h-24 mb-2" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/263ffcc4-213b-4fc7-8c39-adcc75b4bd3c.jpg" width="96"/>
+                <h4 class="text-xl font-semibold">
+                    Focused Learning
+                </h4>
+                <p>
+                    Our lessons are designed to keep your attention on the most important vocabulary, helping you retain words faster and better.
+                </p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4 px-4">
+                <img alt="Icon showing a game controller symbolizing fun and interactive learning" class="w-24 h-24 mb-2" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/67ee5049-8835-42fd-cf38-1bd64407481f.jpg" width="96"/>
+                <h4 class="text-xl font-semibold">
+                    Interactive Games
+                </h4>
+                <p>
+                    Engage with vocabulary through exciting games that make learning enjoyable and motivate you to practice daily.
+                </p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4 px-4">
+                <img alt="Icon of a rising bar chart symbolizing progress tracking and improvement" class="w-24 h-24 mb-2" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/29439332-786d-446a-b21a-426c0962e702.jpg" width="96"/>
+                <h4 class="text-xl font-semibold">
+                    Track Your Progress
+                </h4>
+                <p>
+                    Monitor your vocabulary growth with detailed stats and personalized feedback to keep you motivated and on track.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section aria-label="How VocaBoost works to help users learn English vocabulary" class="max-w-7xl mx-auto px-6 py-16" id="how-it-works">
+        <h3 class="text-white text-3xl font-extrabold mb-12 text-center drop-shadow-lg">
+            How It Works
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-indigo-100">
+            <div class="bg-white bg-opacity-20 rounded-3xl p-8 flex flex-col items-center text-center shadow-lg hover:bg-white hover:bg-opacity-30 transition cursor-default">
+                <img alt="Icon of a book and lightbulb representing learning new vocabulary" class="w-24 h-24 mb-4" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/34d52594-16ba-49a0-95a0-727da95558d5.jpg" width="96"/>
+                <h4 class="text-2xl font-semibold mb-2">
+                    Learn
+                </h4>
+                <p>
+                    Explore curated vocabulary lessons with clear definitions, example sentences, and pronunciation guides.
+                </p>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-3xl p-8 flex flex-col items-center text-center shadow-lg hover:bg-white hover:bg-opacity-30 transition cursor-default">
+                <img alt="Icon of a pencil and checklist representing practice and exercises" class="w-24 h-24 mb-4" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/5bed2049-cc7b-439b-3037-8e2bb55485cd.jpg" width="96"/>
+                <h4 class="text-2xl font-semibold mb-2">
+                    Practice
+                </h4>
+                <p>
+                    Reinforce your knowledge with interactive quizzes, flashcards, and vocabulary games tailored to your level.
+                </p>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-3xl p-8 flex flex-col items-center text-center shadow-lg hover:bg-white hover:bg-opacity-30 transition cursor-default">
+                <img alt="Icon of a trophy and upward arrow representing improvement and achievement" class="w-24 h-24 mb-4" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/2b99c643-2b35-4748-8b5d-2b631da9192d.jpg" width="96"/>
+                <h4 class="text-2xl font-semibold mb-2">
+                    Improve
+                </h4>
+                <p>
+                    Track your progress, earn badges, and stay motivated as you build a strong English vocabulary foundation.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section aria-label="User testimonials about VocaBoost" class="bg-white bg-opacity-90 backdrop-blur-md max-w-7xl mx-auto px-6 py-16 rounded-3xl shadow-lg mb-16" id="testimonials">
+        <h3 class="text-indigo-900 text-3xl font-extrabold mb-12 text-center">
+            What Our Learners Say
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-indigo-800">
+            <div class="bg-yellow-50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center">
+                <img alt="Portrait of a young woman smiling, representing a happy VocaBoost user" class="w-24 h-24 rounded-full mb-4 shadow" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/990c4dde-49b5-4982-52b7-30840c39261d.jpg" width="96"/>
+                <p class="italic mb-4">
+                    "VocaBoost made learning vocabulary fun and easy! The games kept me engaged and I saw real progress in just weeks."
+                </p>
+                <h5 class="font-bold">
+                    Linh Tran
+                </h5>
+                <p class="text-sm text-indigo-600">
+                    Student
+                </p>
+            </div>
+            <div class="bg-yellow-50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center">
+                <img alt="Portrait of a young man with glasses smiling, representing a satisfied VocaBoost user" class="w-24 h-24 rounded-full mb-4 shadow" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/907180c1-a489-4091-0763-226f05c4c9c0.jpg" width="96"/>
+                <p class="italic mb-4">
+                    "The focus on vocabulary helped me improve my English speaking skills quickly. I love the progress tracking feature!"
+                </p>
+                <h5 class="font-bold">
+                    Minh Nguyen
+                </h5>
+                <p class="text-sm text-indigo-600">
+                    Professional
+                </p>
+            </div>
+            <div class="bg-yellow-50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center">
+                <img alt="Portrait of a middle-aged woman smiling confidently, representing a happy VocaBoost user" class="w-24 h-24 rounded-full mb-4 shadow" height="96" loading="lazy" src="https://storage.googleapis.com/a1aa/image/cc8a3e8a-b4af-49da-ba15-db2b005a827e.jpg" width="96"/>
+                <p class="italic mb-4">
+                    "I finally found a vocabulary app that keeps me motivated and focused. The lessons are creative and easy to follow."
+                </p>
+                <h5 class="font-bold">
+                    Thuy Pham
+                </h5>
+                <p class="text-sm text-indigo-600">
+                    Teacher
+                </p>
+            </div>
+        </div>
+    </section>
+    <section aria-label="Call to action to get started with VocaBoost" class="max-w-7xl mx-auto px-6 py-20 flex flex-col items-center text-center" id="get-started">
+        <h3 class="text-white text-4xl font-extrabold mb-6 drop-shadow-lg">
+            Ready to Boost Your English Vocabulary?
+        </h3>
+        <p class="text-indigo-100 max-w-2xl mb-10 drop-shadow-md text-lg">
+            Join thousands of learners who are improving their English vocabulary with VocaBoost. Start your journey today and see the difference focused learning can make!
+        </p>
+        <a th:href="@{/homeWeb/showSignUpForm}" class="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-4 px-12 rounded-full shadow-lg transition text-xl" href="#">
+            Sign Up Free
+            <i class="fas fa-rocket ml-3">
+            </i>
+        </a>
+    </section>
+</main>
+<script th:href="@{/js/user/introduce_web.js}">
+</script>
+</body>
+</html>

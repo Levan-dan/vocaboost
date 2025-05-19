@@ -28,7 +28,12 @@ public class SignUpController {
         return "/user/main_screen";
     }
 
-    @GetMapping("showSignUpForm")
+    @GetMapping("/showIntroducePage")
+    public String showIntroducePage(){
+        return "/user/introduce_web";
+    }
+
+    @GetMapping("/showSignUpForm")
     public String showScreenSignUp(Model model){
         model.addAttribute("user", new User());
         return "/user/sign_up";

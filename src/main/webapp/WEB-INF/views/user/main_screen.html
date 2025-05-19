@@ -16,7 +16,11 @@
     <nav class="flex items-center justify-between h-16">
         <div class="flex items-center space-x-6">
             <a class="flex items-center" href="#">
-                <img style="width: 3rem; height: 3rem" alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-9 h-9" height="32" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png" width="32"/>
+                <img style="width: 3rem; height: 3rem"
+                     alt="Logo with letter N in hexagon shape, blue background with multicolor letter" class="w-9 h-9"
+                     height="32"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png"
+                     width="32"/>
             </a>
             <p style="margin-left: 15px" class="logo">VOCABOOST</p>
         </div>
@@ -24,7 +28,8 @@
             <a class="hover:underline" th:href="@{/homeWeb/showSignUpForm}">
                 Sign Up
             </a>
-            <a class="bg-[#2DD897] hover:bg-[#27c07a] text-white px-4 py-1.5 rounded text-sm font-semibold" th:href="@{/homeWeb/showLogInForm}">
+            <a class="bg-[#2DD897] hover:bg-[#27c07a] text-white px-4 py-1.5 rounded text-sm font-semibold"
+               th:href="@{/homeWeb/showLogInForm}">
                 Sign In
             </a>
         </div>
@@ -51,9 +56,11 @@
             flashcards to help you improve your English communication.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-            <button class="bg-[#2DD897] hover:bg-[#27c07a] text-white text-xs sm:text-sm font-semibold rounded-full px-5 py-2 flex items-center gap-2">
-                Introducing the process
-            </button>
+            <a th:href="@{/homeWeb/showIntroducePage}">
+                <button class="bg-[#2DD897] hover:bg-[#27c07a] text-white text-xs sm:text-sm font-semibold rounded-full px-5 py-2 flex items-center gap-2">
+                    Introducing the process
+                </button>
+            </a>
             <button class="bg-white/20 hover:bg-white/30 text-white text-xs sm:text-sm font-semibold rounded-full px-5 py-2 flex items-center gap-2">
                 Preface
                 <i class="fas fa-arrow-right">
@@ -61,11 +68,16 @@
             </button>
         </div>
         <p class="mt-3 text-[9px] sm:text-xs text-white/70 max-w-xs leading-tight">
-            Don’t aim for perfection — aim for progress. Practice a little every day, and your English will improve faster than you think.
+            Don’t aim for perfection — aim for progress. Practice a little every day, and your English will improve
+            faster than you think.
         </p>
     </section>
     <section class="flex-shrink-0">
-        <img style="height: 310px; width: 450px;" alt="Young woman wearing glasses in red t-shirt holding books and backpack, pointing up with right index finger" class="w-72 sm:w-80 md:w-96" height="520" src="https://acet.edu.vn/wp-content/uploads/2020/02/phuong-phap-tu-hoc-tieng-anh-hieu-qua-nhat-3.jpg" width="420"/>
+        <img style="height: 310px; width: 450px;"
+             alt="Young woman wearing glasses in red t-shirt holding books and backpack, pointing up with right index finger"
+             class="w-72 sm:w-80 md:w-96" height="520"
+             src="https://acet.edu.vn/wp-content/uploads/2020/02/phuong-phap-tu-hoc-tieng-anh-hieu-qua-nhat-3.jpg"
+             width="420"/>
     </section>
 </main>
 </body>
