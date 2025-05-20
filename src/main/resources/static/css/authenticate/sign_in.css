@@ -11,3 +11,8 @@ body {
     letter-spacing: 2px; /* Giãn cách chữ cho dễ nhìn */
     text-transform: uppercase;
 }
+
+#error{
+    text-align: center;
+    margin-bottom: 15px;
+}
