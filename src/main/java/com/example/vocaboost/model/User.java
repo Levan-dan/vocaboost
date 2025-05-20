@@ -29,9 +29,11 @@ public class User {
     private String password;
 
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "Invalid email format")
+    @Column( unique = true)
     private String email;
 
     @Pattern(regexp = "^0\\d{9}$", message = "Incorrect phone number format")
+    @Column( unique = true)
     private String phoneNumber;
 
     private String level;

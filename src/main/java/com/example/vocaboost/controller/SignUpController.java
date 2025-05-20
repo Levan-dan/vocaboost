@@ -1,6 +1,7 @@
 package com.example.vocaboost.controller;
 
 import com.example.vocaboost.model.User;
+import com.example.vocaboost.repository.IUserRepository;
 import com.example.vocaboost.service.IUserService;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import java.time.LocalDateTime;
 public class SignUpController {
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IUserRepository userRepository;
 
 
     @GetMapping("")
@@ -56,6 +59,14 @@ public class SignUpController {
                                    BindingResult bindingResult,
                                    @RequestParam("avatar") MultipartFile avatar,
                                    Model model) throws IOException {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            bindingResult.rejectValue("email", "error.user", "Email already exists");
+        }
+
+        if (userRepository.existsByPhoneNumber(user.getPhoneNumber())) {
+            bindingResult.rejectValue("phoneNumber", "error.user", "Phone number already exists");
+        }
+
         if (bindingResult.hasErrors()) {
             return "/authenticate/sign_up";
         }
@@ -77,7 +88,7 @@ public class SignUpController {
 
         userService.save(user);
 
-        return "/authenticate/surveyQuestion";
+        return "redirect: /SurveyQuestion";
     }
 
 
