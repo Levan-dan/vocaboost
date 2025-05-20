@@ -13,10 +13,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/homeWeb")
@@ -48,6 +50,12 @@ public class SignUpController {
         model.addAttribute("user", new User());
         return "/authenticate/log_in";
     }
+
+    @PostMapping("/signIn")
+    public String signInSystem(@ModelAttribute("user") User user, HttpSession session, Model model) {
+        return userService.login(user, session, model);
+    }
+
 
     @GetMapping("/showPrefacePage")
     public String showPreface() {

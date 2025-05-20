@@ -5,12 +5,15 @@ import com.example.vocaboost.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -50,4 +53,36 @@ public class UserService implements IUserService {
         }
         return "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png";
     }
+
+
+    @Override
+    public String login(User user, HttpSession session, Model model) {
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+
+        if (existingUser.isPresent()) {
+            User databaseUser = existingUser.get();
+
+            if (databaseUser.getPassword().equals(user.getPassword())) {
+                session.setAttribute("logInUser", databaseUser);
+
+                if ("admin".equals(databaseUser.getRole())) {
+                    return "redirect:/admin/dashboard";
+                } else if ("user".equals(databaseUser.getRole())) {
+                    return "redirect:/user/home";
+                } else {
+                    model.addAttribute("error", "Unknown role");
+                    return "/authenticate/log_in";
+                }
+
+            } else {
+                model.addAttribute("error", "Invalid account");
+                return "/authenticate/log_in";
+            }
+
+        } else {
+            model.addAttribute("error", "Email account does not exist");
+            return "/authenticate/log_in";
+        }
+    }
+
 }
