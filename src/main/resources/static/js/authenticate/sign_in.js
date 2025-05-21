@@ -1,3 +1,5 @@
+
+// show password
 const showPasswordCheckbox = document.getElementById("showPassword");
 const passwordInput = document.getElementById("password");
 
@@ -19,6 +21,8 @@ document.getElementById('showPassword').addEventListener('change', function() {
     }
 });
 
+
+// báo lỗi ở các thanh input khi đăng nhập
 document.getElementById('signInForm').addEventListener('submit', function(event) {
     let valid = true;
 
@@ -47,5 +51,30 @@ document.getElementById('signInForm').addEventListener('submit', function(event)
 
     if (!valid) {
         event.preventDefault();
+    }
+});
+
+// show modal
+window.addEventListener('DOMContentLoaded', () => {
+    const successModal = document.getElementById('successModal');
+    const modalContent = document.getElementById('modalContent');
+    if (successModal) {
+        // Show modal with fade and scale animation
+        successModal.classList.remove('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('opacity-0', 'scale-90');
+
+        const redirectUrl = successModal.getAttribute('data-redirect-url');
+        if (redirectUrl) {
+            setTimeout(() => {
+                // Animate modal out
+                modalContent.classList.add('opacity-0', 'scale-90');
+                successModal.classList.add('opacity-0');
+                // After animation ends, hide modal and redirect
+                setTimeout(() => {
+                    successModal.style.display = 'none';
+                    window.location.href = redirectUrl;
+                }, 500);
+            }, 1500);
+        }
     }
 });

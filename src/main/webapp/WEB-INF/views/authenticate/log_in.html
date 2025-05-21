@@ -39,7 +39,8 @@
             Sign In to Your Account
         </h2>
         <p id="error" th:if="${error}" th:text="${error}" class="text-red-500 text-sm font-medium"></p>
-        <form id="signInForm" th:action="@{/homeWeb/signIn}" method="POST" th:object="${user}" class="space-y-6" novalidate>
+        <form id="signInForm" th:action="@{/homeWeb/signIn}" method="POST" th:object="${user}" class="space-y-6"
+              novalidate>
             <div>
                 <label
                         for="email"
@@ -94,6 +95,23 @@
             >
         </p>
     </div>
+
+    <div id="successModal"
+         th:if="${successMessage}"
+         th:attr="data-redirect-url=${redirectUrl}"
+         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-500"
+         aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc"
+    >
+        <div
+                class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 text-gray-900 flex flex-col items-center transform scale-90 opacity-0 transition-all duration-500"
+                id="modalContent"
+        >
+            <i class="fas fa-check-circle text-green-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2" id="modalTitle" th:text="${successMessage}">Login successful !</h3>
+            <p class="text-gray-700" id="modalDesc">Changing direction...</p>
+        </div>
+    </div>
+
 </main>
 <script th:src="@{/js/authenticate/sign_in.js}">
 </script>
