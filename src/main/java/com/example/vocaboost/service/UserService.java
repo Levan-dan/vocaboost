@@ -65,14 +65,17 @@ public class UserService implements IUserService {
             if (databaseUser.getPassword().equals(user.getPassword())) {
                 session.setAttribute("logInUser", databaseUser);
 
+                model.addAttribute("successMessage", "You have successfully logged in!");
+
                 if ("admin".equals(databaseUser.getRole())) {
-                    return "redirect:/admin/dashboard";
+                    model.addAttribute("redirectUrl", "/admin");
                 } else if ("user".equals(databaseUser.getRole())) {
-                    return "redirect:/user/home";
+                    model.addAttribute("redirectUrl", "/user");
                 } else {
                     model.addAttribute("error", "Unknown role");
                     return "/authenticate/log_in";
                 }
+                return "/authenticate/log_in";
 
             } else {
                 model.addAttribute("error", "Invalid account");
