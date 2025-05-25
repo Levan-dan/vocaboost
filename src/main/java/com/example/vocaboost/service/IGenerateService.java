@@ -1,10 +1,11 @@
 package com.example.vocaboost.service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IGenerateService<T> {
     List<T> findAll();
-    T findById(int id);
+    Optional<T> findById(Long id);
     T save(T entity);
-    void deleteById(int id);
+    void deleteById(Long id);
 }

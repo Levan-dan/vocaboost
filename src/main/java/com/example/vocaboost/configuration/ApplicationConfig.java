@@ -16,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -67,8 +68,6 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         return templateResolver;
     }
 
-
-
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -114,6 +113,11 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
     }
 
     @Bean
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
@@ -144,7 +148,7 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
                 .addResourceHandler("/js/**")
                 .addResourceLocations("classpath:/static/js/");
         registry
-                .addResourceHandler("/images/**")
+                .addResourceHandler("/images/avatar/**")
                 .addResourceLocations("file:" + uploadPath); // Thêm ánh xạ file
     }
 
@@ -155,5 +159,7 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         resolver.setMaxUploadSizePerFile(52428800);
         return resolver;
     }
+
+
 }
 

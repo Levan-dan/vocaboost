@@ -4,26 +4,13 @@ body {
 h1, h2 {
     font-family: 'Baloo 2', cursive;
 }
-/* Bounce animation for fun effect */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+#score-result{
+    margin-bottom: 24px;
 }
-.bounce {
-    animation: bounce 2s infinite;
+#question{
+    margin-bottom: 24px;
 }
-/* Shake animation for buttons on hover */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    50% { transform: translateX(3px); }
-    75% { transform: translateX(-3px); }
-    100% { transform: translateX(0); }
-}
-.hover-shake:hover {
-    animation: shake 0.5s;
+
+#submit_survey button{
+    width: 650px;
 }

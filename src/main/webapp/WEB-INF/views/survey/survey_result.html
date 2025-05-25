@@ -1,0 +1,83 @@
+<html class="scroll-smooth" lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+        Điểm Khảo Sát
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/survey/survey_result.css}">
+</head>
+<body class="min-h-screen bg-gradient-to-tr from-indigo-500 via-purple-600 to-pink-500 flex flex-col items-center justify-center p-6 text-center text-white relative overflow-hidden">
+<h1 class="titleSurveyResult">
+    Survey results
+</h1>
+<div class="flex flex-col items-center space-y-8 max-w-xl w-full z-10 relative">
+    <img style="border-radius: 50%" alt="Icon minh họa điểm số" class="w-48 h-48 object-contain drop-shadow-lg"
+         height="192" id="score-icon"
+         th:src="@{'/images/avatar/' + ${avatar}}" width="192"/>
+    <p class="point" id="score-text">
+        You reach
+        <span id="score-value" th:text="${point}">
+    </span>
+        ⭐️
+    </p>
+    <p class="advice" id="score-message">
+    <span th:if="${point >= 8}">
+        Great! You did a great job on the survey.
+    </span>
+        <span th:if="${point >= 5 and point < 8}">
+        You did pretty well, keep it up!
+    </span>
+        <span th:if="${point < 5}">
+        You need to try harder, do not give up!
+    </span>
+    </p>
+
+    <div class="flex space-x-10 mt-6 justify-center w-full px-4">
+        <a th:href="@{/result/viewAnswerSurvey}">
+            <button class="viewBackSurveyButton" id="view-test-btn" type="button">
+                <i class="fas fa-file-alt text-2xl">
+                </i>
+
+                <span class="text-xl">
+      View completed tests
+     </span>
+            </button>
+        </a>
+        <button class="startLearn" id="start-learning-btn" type="button">
+            <i class="fas fa-book-reader text-2xl">
+            </i>
+
+            <span class="text-xl">
+      Start studying
+     </span>
+        </button>
+    </div>
+</div>
+<img alt="Hình nền vòng nguyệt quế vàng kim sáng bóng tượng trưng cho thành tích và chiến thắng trên nền màu xanh dương đậm"
+     class="pointer-events-none fixed inset-0 w-full h-full object-cover opacity-30 -z-10" height="1080"
+     src="https://static.vecteezy.com/system/resources/thumbnails/019/627/760/small_2x/red-maroon-laurel-golden-stage-night-wreath-steps-royal-awards-graphics-background-lines-sparkle-elegant-shine-modern-template-luxury-premium-corporate-abstract-design-template-banner-certificate-photo.jpg"
+     width="1920"/>
+
+
+<!-- Modal -->
+<div id="successModal"
+     data-redirect-url="/homeWeb/showLogInForm"
+class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-500"
+aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+<div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 text-gray-900 flex flex-col items-center transform scale-90 opacity-0 transition-all duration-500"
+     id="modalContent">
+    <i class="fas fa-check-circle text-green-600 text-5xl mb-4"></i>
+    <h3 class="text-xl font-semibold mb-2" id="modalTitle">Account created successfully!</h3>
+    <p class="text-gray-700" id="modalDesc">Moving to login screen...</p>
+</div>
+</div>
+
+<script th:src="@{/js/survey/survey_result.js}" th:inline="javascript">
+</script>
+</body>
+</html>
