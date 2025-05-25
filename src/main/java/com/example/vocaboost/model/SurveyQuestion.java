@@ -120,4 +120,17 @@ public class SurveyQuestion {
     public void setSurveyResults(List<SurveyResult> surveyResults) {
         this.surveyResults = surveyResults;
     }
+
+    @Override
+    public String toString() {
+        return "SurveyQuestion{" +
+                "surveyQuestionId=" + surveyQuestionId +
+                ", questionText='" + questionText + '\'' +
+                ", optionA='" + optionA + '\'' +
+                ", optionB='" + optionB + '\'' +
+                ", optionC='" + optionC + '\'' +
+                ", optionD='" + optionD + '\'' +
+                ", correctOption=" + correctOption +
+                '}';
+    }
 }

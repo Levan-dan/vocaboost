@@ -1,0 +1,10 @@
+#question{
+    margin-bottom: 20px;
+    justify-content: space-around;
+    width: 100%;
+    display: flex
+}
+
+#question_list{
+    width: 70%;
+}

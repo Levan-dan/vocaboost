@@ -2,23 +2,19 @@ package com.example.vocaboost.controller;
 
 import com.example.vocaboost.model.User;
 import com.example.vocaboost.repository.IUserRepository;
-import com.example.vocaboost.service.IUserService;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import com.example.vocaboost.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/homeWeb")
@@ -64,9 +60,13 @@ public class SignUpController {
 
     @PostMapping("/signUp")
     public String signUpToHomeUser(@ModelAttribute("user") @Valid User user,
+                                   HttpSession session,
                                    BindingResult bindingResult,
                                    @RequestParam("avatar") MultipartFile avatar,
-                                   Model model) throws IOException {
+                                   Model model, RedirectAttributes redirectAttributes) throws IOException {
+
+
+
         if (userRepository.existsByEmail(user.getEmail())) {
             bindingResult.rejectValue("email", "error.user", "Email already exists");
         }
@@ -95,6 +95,9 @@ public class SignUpController {
         user.setCreate_at(LocalDateTime.now());
 
         userService.save(user);
+        session.setAttribute("userId", user.getUserId());
+        System.out.println(user.getUserId());
+
 
         return "redirect: /SurveyQuestion";
     }

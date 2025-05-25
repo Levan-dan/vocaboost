@@ -1,0 +1,28 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.viewBackSurveyButton{
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: blue;
+}
+.startLearn{
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: green;
+}
+.titleSurveyResult{
+    font-size: 45px;
+    font-weight: bold;
+    color: #38e1d5;
+    padding-bottom: 20px;
+}
+.point{
+    font-size: 35px;
+    font-weight: bold;
+    color: #e1bc38;
+}
+.advice{
+    font-size: 22px;
+    color: #00ff4e;
+}

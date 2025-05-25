@@ -1,4 +1,4 @@
-package com.example.vocaboost.service;
+package com.example.vocaboost.service.user;
 
 import com.example.vocaboost.model.User;
 import com.example.vocaboost.repository.IUserRepository;
@@ -29,8 +29,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findById(int id) {
-        return null;
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Long id) {
 
     }
 
@@ -49,7 +49,7 @@ public class UserService implements IUserService {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
             File dest = new File(uploadPath, fileName);
             file.transferTo(dest);
-            return "/images/" + fileName;
+            return fileName;
         }
         return "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png";
     }
