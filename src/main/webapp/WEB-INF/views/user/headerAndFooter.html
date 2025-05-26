@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Vocaboost Header and Footer</title>
+</head>
+<body>
+<div th:fragment="siteHeader">
+    <header id="headerOfWeb">
+        <div class="header-left">
+            <div class="logo_header" tabindex="0" aria-label="Vocaboost logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png">
+                <span class="site-name">VOCABOOST</span>
+            </div>
+            <nav id="list_lesson_header">
+                <a href="#toeic" tabindex="1">Toeic</a>
+                <a href="#grammars" tabindex="2">Grammars</a>
+                <a href="#specialized" tabindex="3">Specialized vocabulary</a>
+            </nav>
+        </div>
+        <div class="header-right" role="navigation" aria-label="User menu">
+            <button class="icon_button_header" aria-label="Settings" tabindex="4" title="Settings">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="28px" width="28px"
+                     viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M19.14 12.936a6.978 6.978 0 0 0 .048-1.248 6.978 6.978 0 0 0-.048-1.248l2.034-1.577a.5.5 0 0 0 .12-.637l-1.922-3.32a.5.5 0 0 0-.604-.223l-2.394.96a6.997 6.997 0 0 0-2.16-1.248l-.36-2.532a.5.5 0 0 0-.496-.424h-3.844a.5.5 0 0 0-.496.424l-.36 2.532a6.997 6.997 0 0 0-2.16 1.248l-2.394-.96a.5.5 0 0 0-.604.224l-1.922 3.32a.5.5 0 0 0 .12.638l2.034 1.577a6.978 6.978 0 0 0-.048 1.248 6.978 6.978 0 0 0 .048 1.248l-2.034 1.577a.5.5 0 0 0-.12.637l1.922 3.32a.5.5 0 0 0 .604.223l2.394-.96a6.997 6.997 0 0 0 2.16 1.248l.36 2.532a.5.5 0 0 0 .496.424h3.844a.5.5 0 0 0 .496-.424l.36-2.532a6.997 6.997 0 0 0 2.16-1.248l2.394.96a.5.5 0 0 0 .604-.223l1.922-3.32a.5.5 0 0 0-.12-.637l-2.034-1.577zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+                </svg>
+            </button>
+            <button class="icon_button_header" aria-label="User profile" tabindex="5" title="User profile">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="28px" width="28px"
+                     viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+</div>
+
+
+<div th:fragment="siteFooter">
+    <footer class="max-w-[1200px] mx-auto px-6 py-10 text-white relative">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Left Section -->
+            <div>
+                <div class="flex items-center space-x-2 mb-2">
+                    <img alt="BITI logo with blue and orange colors" class="w-8 h-8" height="32"
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png"
+                         width="32"/>
+                    <span class="text-[#f7941d] font-bold text-lg select-none">
+                         Vocaboost
+                    </span>
+                </div>
+
+                <div class="flex space-x-4 mt-4">
+                    <a aria-label="Facebook" class="text-white hover:text-[#f7941d]" href="#">
+                        <i class="fab fa-facebook-f text-xl">
+                        </i>
+                    </a>
+                    <a aria-label="Twitter" class="text-white hover:text-[#f7941d]" href="#">
+                        <i class="fab fa-twitter text-xl">
+                        </i>
+                    </a>
+                    <a aria-label="Google Plus" class="text-white hover:text-[#f7941d]" href="#">
+                        <i class="fab fa-google-plus-g text-xl">
+                        </i>
+                    </a>
+                    <a aria-label="Phone" class="text-white hover:text-[#f7941d]" href="#">
+                        <i class="fas fa-phone-alt text-xl">
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <!-- Danh Mục -->
+            <div>
+                <h3 class="font-semibold mb-4">
+                    Category
+                </h3>
+                <ul class="space-y-2 text-sm text-[#a0a8c0]">
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Introduce
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Preface
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Learning materials
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Information
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Dịch Vụ -->
+            <div>
+                <h3 class="font-semibold mb-4">
+                    Service
+                </h3>
+                <ul class="space-y-2 text-sm text-[#a0a8c0]">
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Customer care
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Determine level
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            High skills
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Review the plan
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            Improve vocabulary
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-white" href="#">
+                            communicate confidently
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Liên Hệ -->
+            <div>
+                <h3 class="font-semibold mb-4">
+                    Contact
+                </h3>
+                <ul class="space-y-3 text-sm text-[#a0a8c0]">
+                    <li class="flex items-center space-x-2">
+                        <i class="fas fa-map-marker-alt text-[#f7941d]">
+                        </i>
+                        <span>
+                            Admissions office in Vietnam
+                        </span>
+                    </li>
+                    <li class="flex items-center space-x-2 pl-6">
+                        <i class="fas fa-map-marker-alt text-transparent">
+                        </i>
+                        <span>
+                            156 Hoai Duc, Hoa Xuan, Cam Le, Ha Noi
+                        </span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <i class="fas fa-phone-alt text-[#f7941d]">
+                        </i>
+                        <span>
+                            091.553.1379
+                        </span>
+                        <span class="ml-1">
+                            📧
+                        </span>
+                        <a class="hover:text-white" href="mailto:baonguyen@biti.vn">
+                            levandan@gmail.com
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+
