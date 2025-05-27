@@ -44,6 +44,8 @@ dependencies {
     // File upload (hỗ trợ MultipartFile trong controller)
     implementation 'commons-fileupload:commons-fileupload:1.4'
 
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
 }
 
 test {
