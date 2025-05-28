@@ -12,114 +12,53 @@
 <body class="bg-white font-sans">
 <!-- Gọi Header -->
 <header th:include="/user/headerAndFooter :: siteHeader"></header>
-<div class="max-w-4xl mx-auto p-4">
+<div style="width: 70%" class="max-w-4xl mx-auto p-4">
     <header class="text-center mb-6">
         <h1 class="text-[18px] font-bold text-[#7f1d1d] leading-tight">
-            Learn English speaking FREE with TalkEnglish.com
+            Learn English speaking FREE with VocaBoost.com
         </h1>
         <p class="text-[12px] text-black mt-1">
             Our goal is to help you
             <span class="font-bold">
-      Learn English
-     </span>
-            speaking so you can
+                Learn English
+            </span>
+            better so you can
             <span class="font-semibold italic">
-      speak English
-     </span>
+                speak English
+            </span>
             fluently.
         </p>
         <p class="text-[12px] text-black mt-1">
             Improve your
             <span class="font-bold italic">
-      spoken English
-     </span>
-            Free!
+                English communication
+            </span>
+            for free!
         </p>
     </header>
+
     <h2 class="text-[12px] font-extrabold text-black mb-3">
         ENGLISH LESSONS
     </h2>
+
+
     <hr class="border-t border-blue-300 mb-6"/>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-red-100 via-red-50 to-red-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+        <div th:each="subject, start : ${subject}" th:style="'background: ' + ${subject.getBackground_color()}" class="flex space-x-4 items-start bg-gradient-to-r from-red-100 via-red-50 to-red-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             <img alt="Red apple on a wooden desk representing English Speaking Basics"
                  class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/7cca9b42-014a-4d9b-6112-d3fde9f0c056.jpg" width="50"/>
+                 th:src="'/images/subject/' + ${subject.getImage()}" width="50"/>
             <div>
-                <h3 class="text-[13px] font-bold text-red-700 mb-1 hover:underline">
+                <h3 th:text="${subject.getName()}" class="text-[13px] font-bold text-red-700 mb-1 hover:underline">
                     English Speaking Basics
                 </h3>
-                <p class="text-[11px] text-red-900 leading-tight">
+                <p th:text="${subject.getDescription()}" class="text-[11px] text-red-900 leading-tight">
                     Basics of English Speaking for beginners using common expressions.
                 </p>
             </div>
         </div>
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            <img alt="Woman listening with headphones representing English Listening Lessons"
-                 class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/f788e0e4-0ec7-466d-1c77-92b17aed140f.jpg" width="50"/>
-            <div>
-                <h3 class="text-[13px] font-bold text-blue-700 mb-1 hover:underline">
-                    English Listening Lessons
-                </h3>
-                <p class="text-[11px] text-blue-900 leading-tight">
-                    Improve your listening skills with fun questions and answers.
-                </p>
-            </div>
-        </div>
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-green-100 via-green-50 to-green-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            <img alt="Group of people talking outside representing Regular English Lessons"
-                 class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/1a5390a1-8bcf-48e1-81c7-c8d5db2d1e3c.jpg" width="50"/>
-            <div>
-                <h3 class="text-[13px] font-bold text-green-700 mb-1 hover:underline">
-                    Regular English Lessons
-                </h3>
-                <p class="text-[11px] text-green-900 leading-tight">
-                    Learn what to say and how to say things in daily conversations.
-                </p>
-            </div>
-        </div>
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-indigo-100 via-indigo-50 to-indigo-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            <img alt="Grammar book representing Basics of English Grammar"
-                 class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/8e936b4b-962d-47a1-9094-c48f78d0322e.jpg" width="50"/>
-            <div>
-                <h3 class="text-[13px] font-bold text-indigo-700 mb-1 hover:underline">
-                    Basics of English Grammar
-                </h3>
-                <p class="text-[11px] text-indigo-900 leading-tight">
-                    Build basic grammar skills pertaining to English speaking.
-                </p>
-            </div>
-        </div>
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            <img alt="Business people in a meeting representing Business English Lessons"
-                 class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/09adce4d-e9bd-4409-b02a-ca282491bcbd.jpg" width="50"/>
-            <div>
-                <h3 class="text-[13px] font-bold text-yellow-700 mb-1 hover:underline">
-                    Business English Lessons
-                </h3>
-                <p class="text-[11px] text-yellow-900 leading-tight">
-                    Improve your English fluency in a business and office setting.
-                </p>
-            </div>
-        </div>
-        <div class="flex space-x-4 items-start bg-gradient-to-r from-pink-100 via-pink-50 to-pink-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            <img alt="Dictionary and phrases representing Idioms and Phrases"
-                 class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"
-                 src="https://storage.googleapis.com/a1aa/image/0f5ccf06-cc7f-427f-c8ea-3f2bd902ea88.jpg" width="50"/>
-            <div>
-                <h3 class="text-[13px] font-bold text-pink-700 mb-1 hover:underline">
-                    Idioms and Phrases
-                </h3>
-                <p class="text-[11px] text-pink-900 leading-tight">
-                    Learn idioms and phrases that native speakers use and translate.
-                </p>
-            </div>
-        </div>
     </div>
+
 </div>
 <!-- Gọi Footer -->
 <footer th:include="/user/headerAndFooter :: siteFooter"></footer>

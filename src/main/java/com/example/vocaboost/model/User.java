@@ -46,6 +46,12 @@ public class User {
     private String avatarPath;  // Lưu đường dẫn của ảnh vào cơ sở dữ liệu
     private LocalDateTime create_at;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserLessonProgress> progressList;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserExercise> exercises;
+
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SurveyResult> surveyResults;
@@ -170,6 +176,22 @@ public class User {
 
     public String getConfirmPassword() {
         return confirmPassword;
+    }
+
+    public List<UserLessonProgress> getProgressList() {
+        return progressList;
+    }
+
+    public void setProgressList(List<UserLessonProgress> progressList) {
+        this.progressList = progressList;
+    }
+
+    public List<UserExercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<UserExercise> exercises) {
+        this.exercises = exercises;
     }
 
     public void setConfirmPassword(String confirmPassword) {

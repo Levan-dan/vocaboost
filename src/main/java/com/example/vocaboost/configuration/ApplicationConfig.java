@@ -50,6 +50,8 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
 
     @Value("${file-upload}")
     private String uploadPath;
+    @Value("${file-upload-subject}")
+    private String uploadPath_subject;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -150,6 +152,9 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         registry
                 .addResourceHandler("/images/avatar/**")
                 .addResourceLocations("file:" + uploadPath); // Thêm ánh xạ file
+        registry
+                .addResourceHandler("/images/subject/**")
+                .addResourceLocations("file:" + uploadPath_subject);
     }
 
 
