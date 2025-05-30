@@ -1,0 +1,9 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #a5f3fc, #c4b5fd, #f0fdfa);
+    min-height: 100vh;
+}
+
+#formAdd{
+    width: 80%;
+}

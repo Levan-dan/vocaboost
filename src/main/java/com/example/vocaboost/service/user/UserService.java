@@ -1,5 +1,6 @@
 package com.example.vocaboost.service.user;
 
+import com.example.vocaboost.model.Subject;
 import com.example.vocaboost.model.User;
 import com.example.vocaboost.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,5 +88,11 @@ public class UserService implements IUserService {
             return "/authenticate/log_in";
         }
     }
+
+    @Override
+    public String addSubject(Subject subject) {
+        return null;
+    }
+
 
 }
