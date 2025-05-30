@@ -45,39 +45,91 @@
 
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 space-y-3 sm:space-y-0">
         <div class="relative w-full sm:w-72">
-            <input class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" id="searchInput" placeholder="Search lessons by name..." type="text"/>
+            <input name="keySubject"
+                   class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                   id="searchInput" placeholder="Search lessons by name..." type="text"/>
             <span class="absolute left-3 top-2.5 text-gray-400">
-       <i class="fas fa-search">
-       </i>
-      </span>
+                <i class="fas fa-search">
+                </i>
+            </span>
         </div>
-        <button class="inline-flex items-center bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-4 py-2 rounded-md shadow transition" id="addLessonBtn" type="button">
-            <i class="fas fa-plus mr-2">
-            </i>
-            Add Lesson
-        </button>
+        <a th:href="@{/admin/showAddSubjectForm}">
+            <button class="inline-flex items-center bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-4 py-2 rounded-md shadow transition"
+                    id="addLessonBtn" type="button">
+                <i class="fas fa-plus mr-2">
+                </i>
+                Add Lesson
+            </button>
+        </a>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div th:each="subject, start : ${subject}" th:style="'background: ' + ${subject.getBackground_color()}" class="flex space-x-4 items-start bg-gradient-to-r from-red-100 via-red-50 to-red-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer relative">
-            <img th:src="'/images/subject/' + ${subject.getImage()}" alt="Red apple on a wooden desk representing English Speaking Basics" class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50"  width="50"/>
-            <div class="flex-1">
-                <h3 th:text="${subject.getName()}"  class="text-[13px] font-bold text-blue-700 mb-1 hover:underline">
-                    English Speaking Basics
-                </h3>
-                <p th:text="${subject.getDescription()}" class="text-[11px] text-red-900 leading-tight">
-                    Basics of English Speaking for beginners using common expressions.
-                </p>
+    <div id="subjectList">
+        <div th:fragment="subjectListFragment" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div th:each="subject, start : ${subject}" th:style="'background: ' + ${subject.getBackground_color()}"
+                 class="flex space-x-4 items-start bg-gradient-to-r from-red-100 via-red-50 to-red-100 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer relative">
+                <img th:src="'/images/subject/' + ${subject.getImage()}"
+                     alt="Red apple on a wooden desk representing English Speaking Basics"
+                     class="w-[50px] h-[50px] object-cover flex-shrink-0 rounded-md shadow" height="50" width="50"/>
+                <div class="flex-1">
+                    <h3 th:text="${subject.getName()}" class="text-[13px] font-bold text-blue-700 mb-1 hover:underline">
+                        English Speaking Basics
+                    </h3>
+                    <p th:text="${subject.getDescription()}" class="text-[11px] text-red-900 leading-tight">
+                        Basics of English Speaking for beginners using common expressions.
+                    </p>
+                </div>
+                <div class="flex flex-col space-y-2 ml-4">
+                    <a th:href="@{/admin/{id}/updateSubjectForm(id=${subject.getIdSubjects()})}">
+                        <button aria-label="Edit English Speaking Basics"
+                                class="text-red-700 hover:text-red-900 text-sm"
+                                type="button">
+                            <i class="fas fa-edit">
+                            </i>
+                        </button>
+                    </a>
+                    <!--                <a th:href="@{/admin/{id}/deleteSubject(id=${subject.getIdSubjects()})}">-->
+                    <button onclick="openDeleteModal(this)"
+                            th:attr="data-delete-url=@{/admin/{id}/deleteSubject(id=${subject.idSubjects})}, data-lesson-name=${subject.name}"
+                            class="text-red-700 hover:text-red-900 text-sm"
+                            type="button">
+                        <i class="fas fa-trash-alt">
+                        </i>
+                    </button>
+                    <!--                </a>-->
+                </div>
             </div>
-            <div class="flex flex-col space-y-2 ml-4">
-                <button aria-label="Edit English Speaking Basics" class="text-red-700 hover:text-red-900 text-sm" type="button">
-                    <i class="fas fa-edit">
-                    </i>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div aria-describedby="modalDesc" aria-labelledby="modalTitle" aria-modal="true"
+         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="deleteModal"
+         role="dialog">
+        <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 mx-4">
+            <h3 class="text-lg font-semibold text-red-700 mb-4" id="modalTitle">
+                <i class="fas fa-trash-alt"></i>
+                Confirm delete lesson
+            </h3>
+            <p class="text-sm text-gray-700 mb-6" id="modalDesc">
+                Are you sure you want to delete the lesson
+                <span class="font-bold" id="lessonName">
+                <!-- Lesson name will be inserted here via JavaScript -->
+                </span>
+                ?
+            </p>
+            <div class="flex justify-end space-x-3">
+                <button style="color: white; background-color: #acacac; padding: 5px 35px;"
+                        class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+                        id="cancelBtnDeleteSubject" onclick="closeDeleteModal()" type="button">
+                    Cancel
                 </button>
-                <button aria-label="Delete English Speaking Basics" class="text-red-700 hover:text-red-900 text-sm" type="button">
-                    <i class="fas fa-trash-alt">
-                    </i>
-                </button>
+                <form class="inline" id="deleteForm" method="get">
+                    <button style="padding: 5px 35px;"
+                            class="px-4 py-2 rounded-md bg-red-700 text-white hover:bg-red-800 transition"
+                            type="submit">
+                        Delete
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -86,5 +138,9 @@
 </div>
 <!-- Gọi Footer -->
 <footer th:include="/user/headerAndFooter :: siteFooter"></footer>
+
+<script th:src="@{/js/admin/dashboard.js}">
+</script>
 </body>
 </html>
+
