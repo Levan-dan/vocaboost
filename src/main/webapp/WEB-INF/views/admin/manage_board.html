@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Admin Dashboard - Sections</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" th:href="@{/css/user/headerAndFooter.css}" />
+    <link rel="stylesheet" th:href="@{/css/admin/manage_board.css}" />
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-50 font-sans">
+<!-- Header -->
+<header th:include="/admin/header :: siteHeaderAdmin"></header>
+
+<!-- Main Layout -->
+<div class="flex flex-1 overflow-hidden">
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto p-6">
+            <!-- Section Buttons -->
+            <div id="section-button-view"
+                 class="flex flex-wrap justify-center gap-6 min-h-[60vh] transition-all duration-300">
+
+                <!-- Lessons -->
+                <a th:href="@{/admin/subject}" class="transition transform hover:scale-105">
+                    <button class="flex flex-col items-center justify-center space-y-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md px-8 py-14 w-[250px] h-[240px]"
+                            type="button" aria-label="Lessons Management">
+                        <i class="fas fa-book-open text-5xl"></i>
+                        <span class="text-xl">Lessons</span>
+                    </button>
+                </a>
+
+                <!-- Courses -->
+                <button id="open-courses"
+                        class="flex flex-col items-center justify-center space-y-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-md px-8 py-14 w-[250px] h-[240px] transition transform hover:scale-105"
+                        type="button" aria-label="Courses Management">
+                    <i class="fas fa-graduation-cap text-5xl"></i>
+                    <span class="text-xl">Courses</span>
+                </button>
+
+                <!-- Students -->
+                <button id="open-students"
+                        class="flex flex-col items-center justify-center space-y-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-xl shadow-md px-8 py-14 w-[250px] h-[240px] transition transform hover:scale-105"
+                        type="button" aria-label="Students Management">
+                    <i class="fas fa-user-graduate text-5xl"></i>
+                    <span class="text-xl">Students</span>
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Footer -->
+<footer th:include="/user/headerAndFooter :: siteFooter"></footer>
+
+<!-- Scripts -->
+<script th:src="@{/js/user/headerAndFooter.js}"></script>
+<script th:src="@{/js/admin/manage_board.js}"></script>
+</body>
+</html>

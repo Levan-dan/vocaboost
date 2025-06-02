@@ -191,3 +191,7 @@ footer a:focus {
         margin-top: 0.25rem;
     }
 }
+
+#userDropdown{
+    background-color: #3289e8de;
+}

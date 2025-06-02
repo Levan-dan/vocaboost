@@ -6,12 +6,12 @@
     <script src="https://cdn.tailwindcss.com">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{/css/admin/homeUser.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/subject/home_subject.css}">
     <link rel="stylesheet" th:href="@{/css/user/headerAndFooter.css}">
 </head>
 <body class="bg-white font-sans">
 <!-- Gọi Header -->
-<header th:include="/user/headerAndFooter :: siteHeader"></header>
+<header th:include="/admin/header :: siteHeaderAdmin"></header>
 <div style="width: 70%" class="max-w-4xl mx-auto p-4">
     <header class="text-center mb-6">
         <h1 class="text-[18px] font-bold text-[#7f1d1d] leading-tight">
@@ -133,13 +133,13 @@
             </div>
         </div>
     </div>
-
-
 </div>
 <!-- Gọi Footer -->
 <footer th:include="/user/headerAndFooter :: siteFooter"></footer>
 
-<script th:src="@{/js/admin/dashboard.js}">
+<script th:src="@{/js/admin/subject/home_subject.js}">
+</script>
+<script th:src="@{/js/user/headerAndFooter.js}">
 </script>
 </body>
 </html>

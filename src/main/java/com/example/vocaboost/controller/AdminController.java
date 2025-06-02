@@ -25,9 +25,15 @@ public class AdminController {
     private ISubjectRepository subjectRepository;
 
     @GetMapping("/dashboard")
+    public String showDashboard(){
+        return "/admin/manage_board";
+    }
+
+
+    @GetMapping("/subject")
     public String showDashboard(Model model) {
         model.addAttribute("subject", subjectService.findAll());
-        return "/admin/dashboard";
+        return "/admin/subject/home_subject";
     }
 
     @GetMapping("/showAddSubjectForm")
@@ -50,7 +56,7 @@ public class AdminController {
         }
 
         subjectService.save(subject);
-        return "redirect:/admin/dashboard";
+        return "redirect:/admin/subject";
     }
 
     @GetMapping("/{id}/updateSubjectForm")
@@ -80,16 +86,13 @@ public class AdminController {
     public String deleteSub(@PathVariable("id") Long id){
         System.out.println(id);
         subjectService.deleteById(id);
-        return "redirect:/admin/dashboard";
+        return "redirect:/admin/subject";
     }
 
     @GetMapping("/searchSubjects")
     public String searchSubjects(@RequestParam("keySubject") String keyword, Model model) {
         List<Subject> results = subjectRepository.findByNameContainingIgnoreCase(keyword);
         model.addAttribute("subject", results);
-        return "/admin/dashboard :: subjectListFragment";
+        return "/admin/subject/home_subject :: subjectListFragment";
     }
-
-
-
 }

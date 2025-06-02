@@ -40,7 +40,6 @@ document.getElementById('deleteModal').addEventListener('click', (e) => {
 
 
 
-
 // tìm kiếm
 document.getElementById('searchInput').addEventListener('keyup', function () {
     const keyword = this.value;
