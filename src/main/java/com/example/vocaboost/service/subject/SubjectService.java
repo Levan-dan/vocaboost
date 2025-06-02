@@ -65,7 +65,7 @@ public class SubjectService implements ISubjectService {
             subject.setImage(oldImage);
         }
         subjectRepository.save(subject);
-        return "redirect:/admin/dashboard";
+        return "redirect:/admin/subject";
     }
 }
 

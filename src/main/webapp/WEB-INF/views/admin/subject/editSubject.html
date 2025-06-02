@@ -12,7 +12,7 @@
 </head>
 <body>
 <!-- Include Header -->
-<header th:include="/user/headerAndFooter :: siteHeader"></header>
+<header th:include="/admin/header :: siteHeaderAdmin"></header>
 
 <h3 id="titleEdit" 3 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-14 text-center flex items-center justify-center gap-4 select-none tracking-tight">
     <i class="fas fa-edit text-blue-500 animate-pulse text-4xl drop-shadow-md"></i>
@@ -99,7 +99,7 @@
                 <i class="fas fa-save text-lg"></i> Save Changes
             </button>
 
-            <a href="/admin/dashboard"
+            <a href="/admin/subject"
                class="flex items-center justify-center gap-3 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-10 py-4 rounded-2xl shadow-lg transition duration-300 transform hover:-translate-y-1">
                 <i class="fas fa-times text-lg"></i> Cancel
             </a>
@@ -110,6 +110,8 @@
 
 
 <script th:src="@{/js/admin/subject/editSubject.js}">
+</script>
+<script th:src="@{/js/user/headerAndFooter.js}">
 </script>
 
 <!-- Gọi Footer -->

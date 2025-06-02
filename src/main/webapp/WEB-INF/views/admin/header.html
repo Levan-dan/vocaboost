@@ -6,7 +6,7 @@
     <title>Vocaboost Header and Footer</title>
 </head>
 <body>
-<div th:fragment="siteHeader">
+<div th:fragment="siteHeaderAdmin">
     <header id="headerOfWeb" class="flex justify-between items-center px-4 py-3 bg-white shadow-md">
         <div class="header-left flex items-center space-x-6">
             <div class="logo_header flex items-center space-x-2 focus:outline-none" tabindex="0"
@@ -17,11 +17,19 @@
             </div>
             <nav id="list_lesson_header" class="flex space-x-6 text-gray-700 font-medium text-lg"
                  aria-label="Primary navigation">
-                <a href="#toeic" tabindex="1"
-                   class="hover:text-blue-600 focus:outline-none focus:text-blue-600">Toeic</a>
-                <a href="#grammars" tabindex="2" class="hover:text-blue-600 focus:outline-none focus:text-blue-600">Grammars</a>
-                <a href="#specialized" tabindex="3" class="hover:text-blue-600 focus:outline-none focus:text-blue-600">Specialized
-                    vocabulary</a>
+                <a  th:href="@{/admin/dashboard}" tabindex="3" class="hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                    <i class="fas fa-tachometer-alt w-5"></i>
+                    <span class="ml-3 font-medium">Dashboard</span>
+                </a>
+                <a href="#grammars" tabindex="2" class="hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                    <i class="fas fa-users w-5"></i>
+                    <span class="ml-3 font-medium">Users</span>
+                </a>
+                <a href="#specialized" tabindex="3" class="hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                    <i class="fas fa-chart-bar w-5"></i>
+                    <span class="ml-3 font-medium">Reports</span>
+                </a>
+
             </nav>
         </div>
         <div class="header-right relative flex items-center space-x-3" role="navigation" aria-label="User menu">
@@ -171,150 +179,6 @@
             </div>
         </div>
     </div>
-</div>
-
-
-<div th:fragment="siteFooter">
-    <footer class="max-w-[1200px] mx-auto px-6 py-10 text-white relative">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-            <!-- Left Section -->
-            <div>
-                <div class="flex items-center space-x-2 mb-2">
-                    <img alt="BITI logo with blue and orange colors" class="w-8 h-8" height="32"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/VB.NET_Logo.svg/1200px-VB.NET_Logo.svg.png"
-                         width="32"/>
-                    <span class="text-[#f7941d] font-bold text-lg select-none">
-                         Vocaboost
-                    </span>
-                </div>
-
-                <div class="flex space-x-4 mt-4">
-                    <a aria-label="Facebook" class="text-white hover:text-[#f7941d]" href="#">
-                        <i class="fab fa-facebook-f text-xl">
-                        </i>
-                    </a>
-                    <a aria-label="Twitter" class="text-white hover:text-[#f7941d]" href="#">
-                        <i class="fab fa-twitter text-xl">
-                        </i>
-                    </a>
-                    <a aria-label="Google Plus" class="text-white hover:text-[#f7941d]" href="#">
-                        <i class="fab fa-google-plus-g text-xl">
-                        </i>
-                    </a>
-                    <a aria-label="Phone" class="text-white hover:text-[#f7941d]" href="#">
-                        <i class="fas fa-phone-alt text-xl">
-                        </i>
-                    </a>
-                </div>
-            </div>
-            <!-- Danh Mục -->
-            <div>
-                <h3 class="font-semibold mb-4">
-                    Category
-                </h3>
-                <ul class="space-y-2 text-sm text-[#a0a8c0]">
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Introduce
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Preface
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Learning materials
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Information
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Dịch Vụ -->
-            <div>
-                <h3 class="font-semibold mb-4">
-                    Service
-                </h3>
-                <ul class="space-y-2 text-sm text-[#a0a8c0]">
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Customer care
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Determine level
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            High skills
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Review the plan
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            Improve vocabulary
-                        </a>
-                    </li>
-                    <li>
-                        <a class="hover:text-white" href="#">
-                            communicate confidently
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Liên Hệ -->
-            <div>
-                <h3 class="font-semibold mb-4">
-                    Contact
-                </h3>
-                <ul class="space-y-3 text-sm text-[#a0a8c0]">
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-map-marker-alt text-[#f7941d]">
-                        </i>
-                        <span>
-                            Admissions office in Vietnam
-                        </span>
-                    </li>
-                    <li class="flex items-center space-x-2 pl-6">
-                        <i class="fas fa-map-marker-alt text-transparent">
-                        </i>
-                        <span>
-                            156 Hoai Duc, Hoa Xuan, Cam Le, Ha Noi
-                        </span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-phone-alt text-[#f7941d]">
-                        </i>
-                        <span>
-                            091.553.1379
-                        </span>
-                        <span class="ml-1">
-                            📧
-                        </span>
-                        <a class="hover:text-white" href="mailto:baonguyen@biti.vn">
-                            levandan@gmail.com
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 </div>
 </body>
 </html>
