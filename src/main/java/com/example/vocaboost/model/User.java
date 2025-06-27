@@ -49,8 +49,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserLessonProgress> progressList;
 
-    @OneToMany(mappedBy = "user")
-    private List<UserExercise> exercises;
 
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -186,13 +184,6 @@ public class User {
         this.progressList = progressList;
     }
 
-    public List<UserExercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(List<UserExercise> exercises) {
-        this.exercises = exercises;
-    }
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;

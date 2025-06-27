@@ -16,7 +16,6 @@ public class Subject {
     @NotBlank(message = "Subject name must not be blank")
     @Size(max = 50, message = "Subject name must not exceed 50 characters")
     private String name;
-
     private String description;
 
     private String image;

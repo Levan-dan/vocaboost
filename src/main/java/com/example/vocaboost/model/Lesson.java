@@ -15,6 +15,8 @@ public class Lesson {
 
     private String description;
 
+    private int progress;
+
     @Column(name = "created_by")
     private String createdBy;
 
@@ -25,34 +27,39 @@ public class Lesson {
     @JoinColumn(name = "topic_id")
     private Topic topic;
 
-    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
-    private List<LessonContent> contents;
-
     @OneToMany(mappedBy = "lesson")
     private List<UserLessonProgress> progressList;
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
+    private List<Vocabulary> vocabularies;
 
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
+    private List<TheoryContent> theoryContents;
     public Lesson() {
     }
 
-    public Lesson(String title, String description, String createdBy, LocalDateTime createdAt, Topic topic, List<LessonContent> contents, List<UserLessonProgress> progressList) {
+    public Lesson(String title, String description, int progress, String createdBy, LocalDateTime createdAt, Topic topic, List<UserLessonProgress> progressList, List<Vocabulary> vocabularies, List<TheoryContent> theoryContents) {
         this.title = title;
         this.description = description;
+        this.progress = progress;
         this.createdBy = createdBy;
         this.createdAt = createdAt;
         this.topic = topic;
-        this.contents = contents;
         this.progressList = progressList;
+        this.vocabularies = vocabularies;
+        this.theoryContents = theoryContents;
     }
 
-    public Lesson(Long idLesson, String title, String description, String createdBy, LocalDateTime createdAt, Topic topic, List<LessonContent> contents, List<UserLessonProgress> progressList) {
+    public Lesson(Long idLesson, String title, String description, int progress, String createdBy, LocalDateTime createdAt, Topic topic, List<UserLessonProgress> progressList, List<Vocabulary> vocabularies, List<TheoryContent> theoryContents) {
         this.idLesson = idLesson;
         this.title = title;
         this.description = description;
+        this.progress = progress;
         this.createdBy = createdBy;
         this.createdAt = createdAt;
         this.topic = topic;
-        this.contents = contents;
         this.progressList = progressList;
+        this.vocabularies = vocabularies;
+        this.theoryContents = theoryContents;
     }
 
     public Long getIdLesson() {
@@ -103,13 +110,6 @@ public class Lesson {
         this.topic = topic;
     }
 
-    public List<LessonContent> getContents() {
-        return contents;
-    }
-
-    public void setContents(List<LessonContent> contents) {
-        this.contents = contents;
-    }
 
     public List<UserLessonProgress> getProgressList() {
         return progressList;
@@ -117,5 +117,29 @@ public class Lesson {
 
     public void setProgressList(List<UserLessonProgress> progressList) {
         this.progressList = progressList;
+    }
+
+    public List<Vocabulary> getVocabularies() {
+        return vocabularies;
+    }
+
+    public void setVocabularies(List<Vocabulary> vocabularies) {
+        this.vocabularies = vocabularies;
+    }
+
+    public List<TheoryContent> getTheoryContents() {
+        return theoryContents;
+    }
+
+    public void setTheoryContents(List<TheoryContent> theoryContents) {
+        this.theoryContents = theoryContents;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 }
