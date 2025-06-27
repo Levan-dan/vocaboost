@@ -1,0 +1,51 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+        English Topics
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/user/topic/list_topic.css}">
+    <link rel="stylesheet" th:href="@{/css/user/headerAndFooter.css}">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col bg-gradient-to-b from-green-100 via-white to-white">
+<!-- Gọi Header -->
+<header th:include="/user/headerAndFooter :: siteHeader"></header>
+
+<main class="container mx-auto px-6 py-10 flex-grow">
+    <h2 th:text="${nameSubject.getName()}" class="text-3xl font-bold text-gray-800 mb-8 text-center">
+        Popular English Topics
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div th:each="topic : ${topic}"
+             class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+
+            <img th:src="@{'/images/topic/' + ${topic.image}}"
+                 alt="Topic image"
+                 class="w-full h-48 object-cover"
+                 height="400" width="600"/>
+
+            <div class="p-6">
+                <a th:href="@{/lesson/{id}/showLesson(id=${topic.idTopic})}">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2" th:text="${topic.title}">
+                        Title here
+                    </h3>
+                </a>
+                <p class="text-gray-600" th:text="${topic.description}">
+                    Description here
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Gọi Footer -->
+<footer th:include="/user/headerAndFooter :: siteFooter"></footer>
+<script th:src="@{/js/user/headerAndFooter.js}">
+</script>
+</body>
+</html>
