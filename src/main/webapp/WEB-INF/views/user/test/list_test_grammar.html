@@ -1,0 +1,106 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bài học của bạn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" th:href="@{/css/user/headerAndFooter.css}">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+
+    }
+
+    #progress {
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-pink-100 font-sans bg-gradient-to-br from-purple-800 via-pink-500 to-red-500">
+<!-- Header -->
+<header th:include="/user/headerAndFooter :: siteHeader"></header>
+
+<!-- Nội dung chính -->
+<div class="container mx-auto px-4 py-10">
+  <h1  class="text-3xl font-bold text-center text-gray-800 mb-10">Danh sách bài học</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Card bài học -->
+    <button  type="button"
+            class="lesson-card flex items-start space-x-4 bg-white rounded-xl shadow-md px-4 py-4 hover:shadow-xl transition-all w-full text-left hover:scale-[1.02] duration-200">
+      <!-- Vòng tròn phần trăm -->
+      <div class="relative w-14 h-14 flex-shrink-0">
+        <svg class="progress-ring w-14 h-14 -rotate-100" viewBox="0 0 36 36">
+          <circle class="text-gray-300"
+                  stroke-width="3"
+                  stroke="currentColor"
+                  fill="none"
+                  cx="18"
+                  cy="18"
+                  r="15"/>
+          <circle class="progress-ring-fill" stroke-width="3" stroke-linecap="round"
+                  stroke="currentColor" fill="none" cx="18" cy="18" r="15"
+                  stroke-dasharray="94.2" stroke-dashoffset="94.2"/>
+          <text id="progress" class="progress-text" x="18" y="21"
+                text-anchor="middle">0%
+          </text>
+        </svg>
+      </div>
+
+      <!-- Nội dung bài học -->
+      <div class="flex-1 min-w-0">
+        <a >
+          <p  class="font-semibold text-gray-900 text-lg mb-1 truncate">Tên bài học</p>
+        </a>
+        <p  class="text-gray-700 text-sm line-clamp-3 break-words">
+          Mô tả bài học
+        </p>
+      </div>
+    </button>
+  </div>
+</div>
+
+<!--&lt;!&ndash; Script line clamp &ndash;&gt;-->
+<!--<script>-->
+<!--  const style = document.createElement('style');-->
+<!--  style.innerHTML = `-->
+<!--      .line-clamp-3 {-->
+<!--        display: -webkit-box;-->
+<!--        -webkit-line-clamp: 3;-->
+<!--        -webkit-box-orient: vertical;-->
+<!--        overflow: hidden;-->
+<!--      }-->
+<!--    `;-->
+<!--  document.head.appendChild(style);-->
+
+
+<!--  document.querySelectorAll('.lesson-card').forEach(card => {-->
+<!--    const percent = parseFloat(card.getAttribute('data-progress')) || 0;-->
+<!--    const svg = card.querySelector('.progress-ring');-->
+<!--    const circle = svg.querySelector('.progress-ring-fill');-->
+<!--    const text = svg.querySelector('.progress-text');-->
+
+<!--    const radius = 15;-->
+<!--    const circumference = 2 * Math.PI * radius;-->
+<!--    const offset = circumference * (1 - percent / 100);-->
+
+<!--    circle.style.strokeDashoffset = offset.toFixed(2);-->
+<!--    text.textContent = `${Math.round(percent)}%`;-->
+
+<!--    // Gán màu theo mức tiến độ-->
+<!--    if (percent < 30) {-->
+<!--      circle.style.stroke = '#f87171'; // red-400-->
+<!--    } else if (percent < 70) {-->
+<!--      circle.style.stroke = '#facc15'; // yellow-400-->
+<!--    } else {-->
+<!--      circle.style.stroke = '#4ade80'; // green-400-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+
+<!-- Footer -->
+<footer th:include="/user/headerAndFooter :: siteFooter"></footer>
+<script th:src="@{/js/user/headerAndFooter.js}"></script>
+</body>
+</html>
