@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/user/grammar/grammarInfo.css}">
+    <link rel="stylesheet" th:href="@{/css/user/headerAndFooter.css}">
+
+</head>
+<body>
+
+<header th:include="/user/headerAndFooter :: siteHeader"></header>
+
+
+<div class="container mx-auto">
+    <h1 style="margin-top: 30px" class="text-3xl font-bold text-center mb-10 text-blue-700" th:text="${topic.title}">
+    </h1>
+
+    <div style="margin-bottom: 30px" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Grammar Card -->
+        <div class="flip-container h-72" th:each="grammar : ${grammar}">
+            <div class="flip-container h-72 relative">
+                <div class="card-wrapper w-full h-full transition-transform duration-500 transform-style-preserve-3d"
+                     onclick="event.stopPropagation();">
+
+                    <!-- Mặt trước -->
+                    <div class="card-front theory-card bg-white flex flex-col absolute w-full h-full backface-hidden rounded-lg shadow-lg overflow-visible">
+                        <!-- Tiêu đề -->
+                        <div class="flex items-center justify-between p-4 bg-blue-50 relative">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+
+                                <!-- Tooltip chỉ hiển thị khi hover vào phần tiêu đề -->
+                                <div class="ml-3 relative group">
+                                    <!-- Rút gọn tiêu đề -->
+                                    <div
+                                            th:text="${#strings.length(grammar.titleGrammar) > 8 ? #strings.substring(grammar.titleGrammar, 0, 8) + '...' : grammar.titleGrammar}"
+                                            class="text-lg font-bold text-gray-800 max-w-[120px] truncate cursor-default"
+                                    ></div>
+
+                                    <!-- Tooltip -->
+                                    <div
+                                            th:text="${grammar.titleGrammar}"
+                                            class="absolute top-full left-0 mt-1 bg-black text-white text-xs rounded px-2 py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap"
+                                    ></div>
+                                </div>
+                            </div>
+
+                            <!-- Nút View Example -->
+                            <button
+                                    class="text-sm text-blue-600 hover:underline"
+                                    onclick="event.stopPropagation(); this.closest('.card-wrapper').classList.add('flipped')">
+
+                                View Example
+
+                            </button>
+                        </div>
+
+                        <!-- Nội dung có thể scroll -->
+                        <div class="flex-grow overflow-y-auto px-4 py-2 space-y-2">
+                            <h3 class="font-semibold text-gray-700">Parts of Speech</h3>
+                            <p class="text-gray-600 text-sm">English words are categorized into eight parts of
+                                speech:</p>
+                            <ul class="text-sm space-y-1 list-disc list-inside">
+                                <li>Noun (names a person, place, thing, or idea)</li>
+                                <li>Pronoun (replaces a noun)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Mặt sau -->
+                    <div class="card-back example-card absolute w-full h-full backface-hidden rotate-y-180 bg-indigo-50 rounded-lg shadow-lg flex flex-col">
+                        <div class="p-4 flex justify-between items-center bg-indigo-100">
+                            <h3 class="text-indigo-700 font-bold text-lg">Grammar Examples</h3>
+                            <button
+                                    class="text-sm text-indigo-600 hover:underline"
+                                    onclick="event.stopPropagation(); this.closest('.card-wrapper').classList.remove('flipped')">
+                                Back
+                            </button>
+                        </div>
+
+                        <div class="flex-grow overflow-y-auto p-4 space-y-3">
+                            <div th:each="ex : ${exampleMap[grammar.idGrammar]}">
+                                <div th:if="${ex.imageExample != null}" class="mt-2">
+                                    <img style="
+                                    margin: auto;
+                                    height: 150px;
+                                    width: 220px;"
+
+                                         th:src="@{${ex.imageExample}}"
+                                         alt="Example Image"
+                                         class="w-full max-w-xs rounded-md shadow border border-gray-300">
+                                </div>
+                                <p class="text-sm text-gray-800 italic" th:text="${ex.contentExample}"></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer th:include="/user/headerAndFooter :: siteFooter"></footer>
+
+<script th:src="@{/js/user/headerAndFooter.js}">
+</script>
+<script th:src="@{/js/user/grammar/grammarInfo.js}">
+</script>
+</body>
+</html>

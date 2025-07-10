@@ -31,7 +31,17 @@
                  height="400" width="600"/>
 
             <div class="p-6">
-                <a th:href="@{/lesson/{id}/showLesson(id=${topic.idTopic})}">
+                <a th:if="${topic.type == 'null'}" th:href="@{/lesson/{id}/showLesson(id=${topic.idTopic})}">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2" th:text="${topic.title}">
+                        Title here
+                    </h3>
+                </a>
+                <a th:if="${topic.type == 'test'}" th:href="@{/test/showTest}">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2" th:text="${topic.title}">
+                        Title here
+                    </h3>
+                </a>
+                <a th:if="${topic.type == 'grammar'}" th:href="@{/grammar/{id}/show_grammar(id=${topic.idTopic})}">
                     <h3 class="text-xl font-semibold text-indigo-600 mb-2" th:text="${topic.title}">
                         Title here
                     </h3>

@@ -16,6 +16,7 @@ public class Topic {
 
     private String image;
     private String level;
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
@@ -24,25 +25,31 @@ public class Topic {
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
     private List<Lesson> lessons;
 
+    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Grammars> grammars;
+
+
     public Topic() {
     }
 
-    public Topic(String title, String description, String image, String level, Subject subject, List<Lesson> lessons) {
+    public Topic(String title, String description, String image, String level, Subject subject, String type, List<Lesson> lessons) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.level = level;
         this.subject = subject;
+        this.type = type;
         this.lessons = lessons;
     }
 
-    public Topic(Long idTopic, String title, String description, String image, String level, Subject subject, List<Lesson> lessons) {
+    public Topic(Long idTopic, String title, String description, String image, String level, Subject subject, String type, List<Lesson> lessons) {
         this.idTopic = idTopic;
         this.title = title;
         this.description = description;
         this.image = image;
         this.level = level;
         this.subject = subject;
+        this.type = type;
         this.lessons = lessons;
     }
 
@@ -101,5 +108,22 @@ public class Topic {
 
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+
+    public List<Grammars> getGrammars() {
+        return grammars;
+    }
+
+    public void setGrammars(List<Grammars> grammars) {
+        this.grammars = grammars;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

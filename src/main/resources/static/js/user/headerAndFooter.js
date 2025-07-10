@@ -218,3 +218,4 @@ saveBtn.addEventListener("click", () => {
     userInfoModal.setAttribute("aria-hidden", "true");
     userInfoBtn.focus();
 });
+
